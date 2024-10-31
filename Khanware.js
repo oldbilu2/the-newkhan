@@ -25,7 +25,7 @@ const splashScreen = document.createElement('splashScreen');
 
 /* Globals */
 window.features = {
-    questionSpoof: true,
+    SpoofarQuestao: true,
     videoSpoof: true,
     showAnswers: false,
     autoAnswer: false,
@@ -169,7 +169,7 @@ function setupMenu() {
         `;
         watermark.appendChild(dropdownMenu);
         let featuresList = [
-            [{ name: 'questionSpoof', type: 'checkbox', variable: 'features.questionSpoof', attributes: 'checked', labeled: true, label: 'Question Spoof' },
+            [{ name: 'SpoofarQuestao', type: 'checkbox', variable: 'features.SpoofarQuestao', attributes: 'checked', labeled: true, label: 'Question Spoof' },
             { name: 'videoSpoof', type: 'checkbox', variable: 'features.videoSpoof', attributes: 'checked', labeled: true, label: 'Video Spoof' },
             { name: 'showAnswers', type: 'checkbox', variable: 'features.showAnswers', labeled: true, label: 'Answer Revealer' }],
             [{ name: 'autoAnswer', type: 'checkbox', variable: 'features.autoAnswer', dependent: 'autoAnswerDelay,nextRecomendation,repeatQuestion', labeled: true, label: 'Auto Answer' },
@@ -191,11 +191,11 @@ function setupMenu() {
         featuresList.push([{ name: `${user.username} - UID: ${user.UID}`, type: 'nonInput', attributes: 'style="font-size:10px;"padding-left:5px;' }]);
 
         addFeature(featuresList);
-        handleInput(['questionSpoof', 'videoSpoof', 'showAnswers', 'nextRecomendation', 'repeatQuestion', 'minuteFarm', 'customBanner', 'rgbLogo']);
+        handleInput(['SpoofarQuestao', 'videoSpoof', 'showAnswers', 'nextRecomendation', 'repeatQuestion', 'minuteFarm', 'customBanner', 'rgbLogo']);
         if (!device.apple){
             handleInput(['customName', 'customPfp'])
         }
-        handleInput('autoAnswer', checked => checked && !features.questionSpoof && (document.querySelector('[setting-data="features.questionSpoof"]').checked = features.questionSpoof = true));
+        handleInput('autoAnswer', checked => checked && !features.SpoofarQuestao && (document.querySelector('[setting-data="features.SpoofarQuestao"]').checked = features.SpoofarQuestao = true));
         handleInput('autoAnswerDelay', value => value && (featureConfigs.autoAnswerDelay = 4 - value));
         handleInput('darkMode', checked => checked ? (DarkReader.setFetchMethod(window.fetch), DarkReader.enable()) : DarkReader.disable());
         handleInput('onekoJs', checked => { onekoEl = document.getElementById('oneko'); if (onekoEl) {onekoEl.style.display = checked ? null : "none"} });
@@ -258,7 +258,7 @@ function setupMain(){
             try {
                 const responseBody = await clonedResponse.text();
                 let responseObj = JSON.parse(responseBody);
-                if (features.questionSpoof && responseObj?.data?.assessmentItem?.item?.itemData) {
+                if (features.SpoofarQuestao && responseObj?.data?.assessmentItem?.item?.itemData) {
                     let itemData = JSON.parse(responseObj.data.assessmentItem.item.itemData);
                     if(itemData.question.content[0] === itemData.question.content[0].toUpperCase()){
                         itemData.answerArea = { "calculator": false, "chi2Table": false, "periodicTable": false, "tTable": false, "zTable": false }
@@ -381,7 +381,7 @@ function setupMain(){
     async function autoAnswer() {
         const baseClasses = ["_1tuo6xk", "_ssxvf9l", "_1f0fvyce", "_rz7ls7u", "_1yok8f4", "_1e5cuk2a"];
         while (true) {
-            if(features.autoAnswer&&features.questionSpoof){
+            if(features.autoAnswer&&features.SpoofarQuestao){
                 const classToCheck = [...baseClasses];
                 if (features.nextRecomendation) { device.mobile ? classToCheck.push("_ixuggsz") : classToCheck.push("_1kkrg8oi"); }
                 if (features.repeatQuestion) classToCheck.push("_1abyu0ga");
