@@ -169,7 +169,7 @@ function setupMenu() {
         `;
         watermark.appendChild(dropdownMenu);
         let featuresList = [
-            [{ name: 'SpoofarQuestao', type: 'checkbox', variable: 'features.SpoofarQuestao', attributes: 'checked', labeled: true, label: 'Question Spoof' },
+            [{ name: 'SpoofarQuestao', type: 'checkbox', variable: 'features.SpoofarQuestao', attributes: 'checked', labeled: true, label: 'Spoofar Questão' },
             { name: 'videoSpoof', type: 'checkbox', variable: 'features.videoSpoof', attributes: 'checked', labeled: true, label: 'Video Spoof' },
             { name: 'showAnswers', type: 'checkbox', variable: 'features.showAnswers', labeled: true, label: 'Answer Revealer' }],
             [{ name: 'autoAnswer', type: 'checkbox', variable: 'features.autoAnswer', dependent: 'autoAnswerDelay,nextRecomendation,repeatQuestion', labeled: true, label: 'Auto Answer' },
